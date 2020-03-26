@@ -14,24 +14,24 @@ scanf("%d",&p);
 for(i=0;i<p;i++)
 completed[i]=0;
 
-printf("enter the total no of resources:\n\n");
+printf("\n\n enter the total no of resources:");
 scanf("%d",&r);
 
-printf("enter the max for each process\n\n:");
+printf("\n\nenter the max value for all process\:");
 for(i=0;i<p;i++)
 {
 printf("\n for process %d:",i+1);
 for(j=0;j<r;j++)
 scanf("%d",&Max[i][j]);
 }
-printf("\n\n enter the allocation for each process:");
+printf("\n\n enter the allocation for all process:");
 for(i=0; i<p; i++)
 {
 printf("\n for process %d:",i+1);
 for(j=0;j<r;j++)
 scanf("%d",&allocation[i][j]);
 }
-printf("\n\n enter the available resources:");
+printf("\n\n enter the total available resources:");
 for(i=0;i<r;i++)
 scanf("%d",&available[i]);
 
@@ -54,6 +54,7 @@ process =-1;
 for (i=0;i<p;i++)
    {
 if (completed[i]=0)
+{
 process=i;
 for(j=0;j<r;j++)
 {
@@ -64,10 +65,10 @@ break;
 }
 }
 }
-if(process==!-1)
+if(process != -1)
 break;
 }
-if(process==!-1)
+if(process!=-1)
 {
 printf("\nprocess %d runs to completion",process +1);
 safesequence[count]=process +1;
@@ -81,6 +82,18 @@ completed[process]=1;
 }
 }
 }
+while(count != p && process != -1);
 
+if(count == p)
+{
+	printf("\nthe system is in a safe state!!\n");
+	printf("Safe sequence : < ");
+	for( i = 0; i < p; i++)
+			printf("%d  ", safesequence[i]);
+	printf(">\n");
+}
+else
+	printf("\nThe system is in an unsafe state!!");
+}
 
 
